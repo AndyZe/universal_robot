@@ -165,7 +165,7 @@
       type="revolute">
       <origin
         xyz="0 0 0.0427"
-        rpy="0 0 1.5708" />
+        rpy="0 0 ${pi/2}" />
       <parent link="${prefix}base_link" />
       <child link="${prefix}shoulder_link" />
       <axis
