@@ -264,6 +264,7 @@
             rgba="0.89804 0.91765 0.92941 1" />
         </material>
       </visual>
+<!--
       <collision>
         <origin
           xyz="0 0 0"
@@ -273,6 +274,7 @@
             filename="package://al_arm_5_2/meshes/seg3.STL" />
         </geometry>
       </collision>
+-->
     </link>
     <joint
       name="${prefix}elbow_joint"
@@ -320,6 +322,7 @@
             rgba="0.50196 0.50196 1 1" />
         </material>
       </visual>
+<!--
       <collision>
         <origin
           xyz="0 0 0"
@@ -329,6 +332,7 @@
             filename="package://al_arm_5_2/meshes/seg4.STL" />
         </geometry>
       </collision>
+-->
     </link>
     <joint
       name="${prefix}wrist_1_joint"
@@ -376,6 +380,7 @@
             rgba="0.50196 0.50196 1 1" />
         </material>
       </visual>
+<!--
       <collision>
         <origin
           xyz="0 0 0"
@@ -385,6 +390,7 @@
             filename="package://al_arm_5_2/meshes/seg5.STL" />
         </geometry>
       </collision>
+-->
     </link>
     <joint
       name="${prefix}wrist_2_joint"
@@ -432,6 +438,7 @@
             rgba="0.50196 0.50196 1 1" />
         </material>
       </visual>
+<!--
       <collision>
         <origin
           xyz="0 0 -0.06"
@@ -441,6 +448,7 @@
             filename="package://al_arm_5_2/meshes/seg6.STL" />
         </geometry>
       </collision>
+-->
     </link>
     <joint
       name="${prefix}wrist_3_joint"
