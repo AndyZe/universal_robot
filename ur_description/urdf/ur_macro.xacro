@@ -109,6 +109,7 @@
             rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
         </material>
       </visual>
+<!--
       <collision>
         <origin
           xyz="0 0 0"
@@ -118,6 +119,7 @@
             filename="package://al_arm_2_3_t1/meshes/Base.STL" />
         </geometry>
       </collision>
+-->
     </link>
     <link
       name="${prefix}shoulder_link">
@@ -149,6 +151,7 @@
             rgba="0.501960784313725 0.501960784313725 1 1" />
         </material>
       </visual>
+<!--
       <collision>
         <origin
           xyz="0 0 0"
@@ -158,6 +161,7 @@
             filename="package://al_arm_2_3_t1/meshes/Seg1.STL" />
         </geometry>
       </collision>
+-->
     </link>
     <joint
       name="${prefix}shoulder_pan_joint"
@@ -205,6 +209,7 @@
             rgba="0.501960784313725 0.501960784313725 1 1" />
         </material>
       </visual>
+<!--
       <collision>
         <origin
           xyz="0 0 0"
@@ -214,6 +219,7 @@
             filename="package://al_arm_2_3_t1/meshes/Seg2.STL" />
         </geometry>
       </collision>
+-->
     </link>
     <joint
       name="${prefix}shoulder_lift_joint"
@@ -261,6 +267,7 @@
             rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
         </material>
       </visual>
+<!--
       <collision>
         <origin
           xyz="0 0 0"
@@ -270,6 +277,7 @@
             filename="package://al_arm_2_3_t1/meshes/Seg3.STL" />
         </geometry>
       </collision>
+-->
     </link>
     <joint
       name="Joint_2"
@@ -312,6 +320,7 @@
             rgba="0.501960784313725 0.501960784313725 1 1" />
         </material>
       </visual>
+<!--
       <collision>
         <origin
           xyz="0 0 0"
@@ -321,6 +330,7 @@
             filename="package://al_arm_2_3_t1/meshes/Seg4.STL" />
         </geometry>
       </collision>
+-->
     </link>
     <joint
       name="${prefix}elbow_joint"
@@ -368,6 +378,7 @@
             rgba="0.501960784313725 0.501960784313725 1 1" />
         </material>
       </visual>
+<!--
       <collision>
         <origin
           xyz="0 0 0"
@@ -377,6 +388,7 @@
             filename="package://al_arm_2_3_t1/meshes/Seg5.STL" />
         </geometry>
       </collision>
+-->
     </link>
     <joint
       name="${prefix}wrist_1_joint"
@@ -424,6 +436,7 @@
             rgba="0.501960784313725 0.501960784313725 1 1" />
         </material>
       </visual>
+<!--
       <collision>
         <origin
           xyz="0 0 0"
@@ -433,6 +446,7 @@
             filename="package://al_arm_2_3_t1/meshes/Seg6.STL" />
         </geometry>
       </collision>
+-->
     </link>
     <joint
       name="${prefix}wrist_2_joint"
@@ -480,6 +494,7 @@
             rgba="0.501960784313725 0.501960784313725 1 1" />
         </material>
       </visual>
+<!--
       <collision>
         <origin
           xyz="0 0 -0.12"
@@ -489,6 +504,7 @@
             filename="package://al_arm_2_3_t1/meshes/EOAT.STL" />
         </geometry>
       </collision>
+-->
     </link>
     <joint
       name="${prefix}wrist_3_joint"
@@ -540,7 +556,7 @@
     <joint name="${prefix}flange-tool0" type="fixed">
       <!-- default toolframe: X+ left, Y+ up, Z+ front -->
       <origin xyz="0 0 0" rpy="${pi/2.0} 0 ${pi/2.0}"/>
-      <parent link="${prefix}flange"/>
+      <parent link="${prefix}EOAT"/>
       <child link="${prefix}tool0"/>
     </joint>
   </xacro:macro>
