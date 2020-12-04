@@ -75,22 +75,25 @@
     <!-- Add URDF transmission elements (for ros_control) -->
     <xacro:ur_arm_transmission prefix="${prefix}" hw_interface="${transmission_hw_interface}" />
 
-    <!-- main serial chain -->
+
+
+
+
     <link
       name="${prefix}base_link">
       <inertial>
         <origin
-          xyz="0 0 0.014753"
+          xyz="-6.93889390390723E-18 2.77555756156289E-17 0.0147527451068121"
           rpy="0 0 0" />
         <mass
-          value="0.82586" />
+          value="0.825861073097743" />
         <inertia
-          ixx="0.0020803"
-          ixy="1.735E-19"
-          ixz="3.2973E-19"
-          iyy="0.0020803"
-          iyz="3.6808E-19"
-          izz="0.0039193" />
+          ixx="0.00208027891140234"
+          ixy="-7.14684049245823E-19"
+          ixz="4.50656009154085E-19"
+          iyy="0.00208027891140235"
+          iyz="-5.57841619598388E-19"
+          izz="0.00391932737987958" />
       </inertial>
       <visual>
         <origin
@@ -98,81 +101,77 @@
           rpy="0 0 0" />
         <geometry>
           <mesh
-            filename="package://al_arm_5_2/meshes/base.STL" />
+            filename="package://al_arm_2_3_t1/meshes/Base.STL" />
         </geometry>
         <material
           name="">
           <color
-            rgba="0.79216 0.81961 0.93333 1" />
+            rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
         </material>
       </visual>
-<!--
       <collision>
         <origin
           xyz="0 0 0"
           rpy="0 0 0" />
         <geometry>
           <mesh
-            filename="package://al_arm_5_2/meshes/base.STL" />
+            filename="package://al_arm_2_3_t1/meshes/Base.STL" />
         </geometry>
       </collision>
--->
     </link>
     <link
       name="${prefix}shoulder_link">
       <inertial>
         <origin
-          xyz="0.0057811 -4.7696E-10 0.086487"
-          rpy="0 0 3.141" />
+          xyz="0.00578107509486808 -4.76958778028447E-10 0.0864872761296608"
+          rpy="0 0 3.1415" />
         <mass
-          value="2.207" />
+          value="2.20704513466782" />
         <inertia
-          ixx="0.0095841"
-          ixy="8.9967E-10"
-          ixz="-0.0003"
-          iyy="0.0097275"
-          iyz="4.4737E-10"
-          izz="0.0055768" />
+          ixx="0.00958414619563909"
+          ixy="8.99674275410972E-10"
+          ixz="-0.000299996856367022"
+          iyy="0.00972749157915772"
+          iyz="4.47374741596083E-10"
+          izz="0.00557677453899358" />
       </inertial>
       <visual>
         <origin
           xyz="0 0 0"
-          rpy="0 0 3.141" />
+          rpy="0 0 0" />
         <geometry>
           <mesh
-            filename="package://al_arm_5_2/meshes/seg1.STL" />
+            filename="package://al_arm_2_3_t1/meshes/Seg1.STL" />
         </geometry>
         <material
           name="">
           <color
-            rgba="0.50196 0.50196 1 1" />
+            rgba="0.501960784313725 0.501960784313725 1 1" />
         </material>
       </visual>
-<!--
       <collision>
         <origin
           xyz="0 0 0"
           rpy="0 0 0" />
         <geometry>
           <mesh
-            filename="package://al_arm_5_2/meshes/seg1.STL" />
+            filename="package://al_arm_2_3_t1/meshes/Seg1.STL" />
         </geometry>
       </collision>
--->
     </link>
     <joint
       name="${prefix}shoulder_pan_joint"
       type="revolute">
       <origin
         xyz="0 0 0.0427"
-        rpy="0 0 ${pi/2}" />
+        rpy="0 0 0" />
       <parent link="${prefix}base_link" />
       <child link="${prefix}shoulder_link" />
       <axis
         xyz="0 0 1" />
       <limit
-        lower="-3.14"
-        upper="3.14"
+        lower="-1.571"
+        upper="1.571"
         effort="0"
         velocity="0" />
     </joint>
@@ -180,17 +179,17 @@
       name="${prefix}upper_arm_link">
       <inertial>
         <origin
-          xyz="0.6 0.0005672 0.085941"
+          xyz="0.00236385799568389 0.00136442528422548 0.145940570815008"
           rpy="0 0 0" />
         <mass
-          value="2.1" />
+          value="2.10002062392676" />
         <inertia
-          ixx="0.0096686"
-          ixy="-1.7798E-05"
-          ixz="-2.2764E-05"
-          iyy="0.0097485"
-          iyz="-4.8304E-06"
-          izz="0.0051536" />
+          ixx="0.0096866811667758"
+          ixy="-3.78905636830833E-05"
+          ixz="-2.01582616482002E-05"
+          iyy="0.00973042156076894"
+          iyz="-1.16285177834027E-05"
+          izz="0.0051535893543322" />
       </inertial>
       <visual>
         <origin
@@ -198,39 +197,37 @@
           rpy="0 0 0" />
         <geometry>
           <mesh
-            filename="package://al_arm_5_2/meshes/seg2.STL" />
+            filename="package://al_arm_2_3_t1/meshes/Seg2.STL" />
         </geometry>
         <material
           name="">
           <color
-            rgba="0.50196 0.50196 1 1" />
+            rgba="0.501960784313725 0.501960784313725 1 1" />
         </material>
       </visual>
-<!--
       <collision>
         <origin
           xyz="0 0 0"
           rpy="0 0 0" />
         <geometry>
           <mesh
-            filename="package://al_arm_5_2/meshes/seg2.STL" />
+            filename="package://al_arm_2_3_t1/meshes/Seg2.STL" />
         </geometry>
       </collision>
--->
     </link>
     <joint
       name="${prefix}shoulder_lift_joint"
       type="revolute">
       <origin
-        xyz="-0.06 0 0.11"
-        rpy="0 -1.5708 0" />
+        xyz="0 0 0.11"
+        rpy="3.1415 -1.5708 0" />
       <parent link="${prefix}shoulder_link" />
       <child link="${prefix}upper_arm_link" />
       <axis
         xyz="0 0 1" />
       <limit
-        lower="-3.14"
-        upper="3.14"
+        lower="-1.571"
+        upper="1.571"
         effort="0"
         velocity="0" />
     </joint>
@@ -238,17 +235,17 @@
       name="${prefix}forearm_link">
       <inertial>
         <origin
-          xyz="-5.0864E-07 0.0083839 0.20092"
+          xyz="-0.00838393613902233 -4.91095186582607E-07 0.260922409686664"
           rpy="0 0 0" />
         <mass
-          value="0.81968" />
+          value="0.819681577987536" />
         <inertia
-          ixx="0.0025453"
-          ixy="-5.2922E-10"
-          ixz="-3.0369E-10"
-          iyy="0.0016077"
-          iyz="-0.00011692"
-          izz="0.0019806" />
+          ixx="0.00160765831987408"
+          ixy="5.92417274710161E-10"
+          ixz="0.000116924443578868"
+          iyy="0.00254525158547177"
+          iyz="-2.77379135949023E-10"
+          izz="0.00198059878006" />
       </inertial>
       <visual>
         <origin
@@ -256,97 +253,88 @@
           rpy="0 0 0" />
         <geometry>
           <mesh
-            filename="package://al_arm_5_2/meshes/seg3.STL" />
+            filename="package://al_arm_2_3_t1/meshes/Seg3.STL" />
         </geometry>
         <material
           name="">
           <color
-            rgba="0.89804 0.91765 0.92941 1" />
+            rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
         </material>
       </visual>
-<!--
       <collision>
         <origin
           xyz="0 0 0"
           rpy="0 0 0" />
         <geometry>
           <mesh
-            filename="package://al_arm_5_2/meshes/seg3.STL" />
+            filename="package://al_arm_2_3_t1/meshes/Seg3.STL" />
         </geometry>
       </collision>
--->
     </link>
     <joint
-      name="${prefix}elbow_joint"
-      type="revolute">
+      name="Joint_2"
+      type="fixed">
       <origin
-        xyz="0.058689 0.012475 0.09"
-        rpy="-1.5708 0 -1.3614" />
-      <parent link="${prefix}upper_arm_link" />
-      <child link="${prefix}forearm_link" />
-      <limit
-        lower="-3.14"
-        upper="3.14"
-        effort="0"
-        velocity="0" />
-      <axis
-        xyz="0 0 1" />
+        xyz="0 0 0.15"
+        rpy="0.5236 -1.5708 3.1415" />
+      <parent
+        link="${prefix}upper_arm_link" />
+      <child
+        link="${prefix}forearm_link" />
     </joint>
     <link
       name="${prefix}wrist_1_link">
       <inertial>
         <origin
-          xyz="0.028904 -0.03325 0.050924"
+          xyz="-0.0144066128415552 -0.00831766306521403 0.138440702841905"
           rpy="0 0 0" />
         <mass
-          value="1.5416" />
+          value="1.19693957833335" />
         <inertia
-          ixx="0.0025041"
-          ixy="0.00055564"
-          ixz="-0.00017823"
-          iyy="0.0023479"
-          iyz="0.00020503"
-          izz="0.0028189" />
+          ixx="0.00146338839182427"
+          ixy="-7.75815880987421E-05"
+          ixz="0.000235267465053867"
+          iyy="0.00155297172259349"
+          iyz="0.000135831693069045"
+          izz="0.00142951512500459" />
       </inertial>
       <visual>
         <origin
           xyz="0 0 0"
-          rpy="0 0 0" />
+          rpy="0 0 0.53" />
         <geometry>
           <mesh
-            filename="package://al_arm_5_2/meshes/seg4.STL" />
+            filename="package://al_arm_2_3_t1/meshes/Seg4.STL" />
         </geometry>
         <material
           name="">
           <color
-            rgba="0.50196 0.50196 1 1" />
+            rgba="0.501960784313725 0.501960784313725 1 1" />
         </material>
       </visual>
-<!--
       <collision>
         <origin
           xyz="0 0 0"
           rpy="0 0 0" />
         <geometry>
           <mesh
-            filename="package://al_arm_5_2/meshes/seg4.STL" />
+            filename="package://al_arm_2_3_t1/meshes/Seg4.STL" />
         </geometry>
       </collision>
--->
     </link>
     <joint
-      name="${prefix}wrist_1_joint"
+      name="${prefix}elbow_joint"
       type="revolute">
       <origin
-        xyz="0 0.09013 0.244"
-        rpy="-1.5708 -1.3614 0" />
+        xyz="0 0 0.304"
+        rpy="3.1416 -1.5708 3.1416" />
       <parent link="${prefix}forearm_link" />
       <child link="${prefix}wrist_1_link" />
       <axis
-        xyz="0 0 1" />
+        xyz="0 0 -1" />
       <limit
-        lower="-3.14"
-        upper="3.14"
+        lower="-1.571"
+        upper="1.571"
         effort="0"
         velocity="0" />
     </joint>
@@ -354,17 +342,17 @@
       name="${prefix}wrist_2_link">
       <inertial>
         <origin
-          xyz="5.2201E-07 -0.003931 0.039853"
+          xyz="-0.00746023493517594 2.85001320932121E-07 0.161487680264405"
           rpy="0 0 0" />
         <mass
-          value="0.71921" />
+          value="0.691515019957766" />
         <inertia
-          ixx="0.0019666"
-          ixy="-3.0762E-10"
-          ixz="1.656E-11"
-          iyy="0.0010669"
-          iyz="5.6958E-05"
-          izz="0.0017541" />
+          ixx="0.00103136689717979"
+          ixy="1.69739283129822E-10"
+          ixz="9.65296060793021E-05"
+          iyy="0.00195025313606054"
+          iyz="-1.83525959541813E-10"
+          izz="0.00177655955723376" />
       </inertial>
       <visual>
         <origin
@@ -372,39 +360,37 @@
           rpy="0 0 0" />
         <geometry>
           <mesh
-            filename="package://al_arm_5_2/meshes/seg5.STL" />
+            filename="package://al_arm_2_3_t1/meshes/Seg5.STL" />
         </geometry>
         <material
           name="">
           <color
-            rgba="0.50196 0.50196 1 1" />
+            rgba="0.501960784313725 0.501960784313725 1 1" />
         </material>
       </visual>
-<!--
       <collision>
         <origin
           xyz="0 0 0"
           rpy="0 0 0" />
         <geometry>
           <mesh
-            filename="package://al_arm_5_2/meshes/seg5.STL" />
+            filename="package://al_arm_2_3_t1/meshes/Seg5.STL" />
         </geometry>
       </collision>
--->
     </link>
     <joint
-      name="${prefix}wrist_2_joint"
+      name="${prefix}wrist_1_joint"
       type="revolute">
       <origin
-        xyz="0.13449 -0.15472 0.06"
-        rpy="-1.5708 0.12217 -2.426" />
+        xyz="0 0 0.15013"
+        rpy="2.618 -1.5708 -1.5708" />
       <parent link="${prefix}wrist_1_link" />
       <child link="${prefix}wrist_2_link" />
       <axis
         xyz="0 0 -1" />
       <limit
-        lower="-3.14"
-        upper="3.14"
+        lower="-1.571"
+        upper="1.571"
         effort="0"
         velocity="0" />
     </joint>
@@ -412,60 +398,120 @@
       name="${prefix}wrist_3_link">
       <inertial>
         <origin
-          xyz="-0.0030119 -0.097795 0.051894"
+          xyz="0.00221631980461306 -0.00682201775014385 0.0998520497439655"
           rpy="0 0 0" />
         <mass
-          value="1.7876" />
+          value="0.719205488845403" />
         <inertia
-          ixx="0.0067992"
-          ixy="0.00061613"
-          ixz="8.5775E-11"
-          iyy="0.0022268"
-          iyz="5.6958E-05"
-          izz="0.006937" />
+          ixx="0.00189942342514212"
+          ixy="0.000270489236034651"
+          ixz="-3.21178194418386E-05"
+          iyy="0.00115482986392856"
+          iyz="9.8849055886045E-05"
+          izz="0.00177485843278574" />
       </inertial>
       <visual>
         <origin
-          xyz="0 0 -0.06"
+          xyz="0 0 0"
           rpy="0 0 0" />
         <geometry>
           <mesh
-            filename="package://al_arm_5_2/meshes/seg6.STL" />
+            filename="package://al_arm_2_3_t1/meshes/Seg6.STL" />
         </geometry>
         <material
           name="">
           <color
-            rgba="0.50196 0.50196 1 1" />
+            rgba="0.501960784313725 0.501960784313725 1 1" />
         </material>
       </visual>
-<!--
       <collision>
         <origin
-          xyz="0 0 -0.06"
+          xyz="0 0 0"
           rpy="0 0 0" />
         <geometry>
           <mesh
-            filename="package://al_arm_5_2/meshes/seg6.STL" />
+            filename="package://al_arm_2_3_t1/meshes/Seg6.STL" />
         </geometry>
       </collision>
--->
+    </link>
+    <joint
+      name="${prefix}wrist_2_joint"
+      type="revolute">
+      <origin
+        xyz="0 0 0.1802"
+        rpy="0 -1.5708 3.1416" />
+      <parent link="${prefix}wrist_2_link" />
+      <child link="${prefix}wrist_3_link" />
+      <axis
+        xyz="0 0 -1" />
+      <limit
+        lower="-1.571"
+        upper="1.571"
+        effort="0"
+        velocity="0" />
+    </joint>
+    <link
+      name="EOAT">
+      <inertial>
+        <origin
+          xyz="-2.38657933762654E-07 0.0813741192774262 0.108881870556287"
+          rpy="0 0 0" />
+        <mass
+          value="1.78761153567891" />
+        <inertia
+          ixx="0.0071702205073627"
+          ixy="-7.35760443531993E-11"
+          ixz="1.2255322126224E-10"
+          iyy="0.00222675892296292"
+          iyz="-0.000512198781306194"
+          izz="0.00660747491066511" />
+      </inertial>
+      <visual>
+        <origin
+          xyz="0 0 -0.12"
+          rpy="0 0 0" />
+        <geometry>
+          <mesh
+            filename="package://al_arm_2_3_t1/meshes/EOAT.STL" />
+        </geometry>
+        <material
+          name="">
+          <color
+            rgba="0.501960784313725 0.501960784313725 1 1" />
+        </material>
+      </visual>
+      <collision>
+        <origin
+          xyz="0 0 -0.12"
+          rpy="0 0 0" />
+        <geometry>
+          <mesh
+            filename="package://al_arm_2_3_t1/meshes/EOAT.STL" />
+        </geometry>
+      </collision>
     </link>
     <joint
       name="${prefix}wrist_3_joint"
       type="revolute">
       <origin
-        xyz="0 -0.14 0.06"
-        rpy="1.5708 -1.1519 0" />
-      <parent link="${prefix}wrist_2_link" />
-      <child link="${prefix}wrist_3_link" />
+        xyz="-0.02 0.1 0.12"
+        rpy="1.885 -1.5708 3.1416" />
+      <parent
+        link="${prefix}wrist_3_link" />
+      <child
+        link="EOAT" />
       <axis
         xyz="0 1 0" />
       <limit
-        lower="-3.14"
-        upper="3.14"
+        lower="-1.571"
+        upper="1.571"
         effort="0"
         velocity="0" />
     </joint>
+
+
+
+
 
 
     <!-- ROS-Industrial 'base' frame: base_link to UR 'Base' Coordinates transform -->
