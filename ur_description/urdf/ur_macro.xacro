@@ -76,231 +76,407 @@
     <xacro:ur_arm_transmission prefix="${prefix}" hw_interface="${transmission_hw_interface}" />
 
     <!-- links: main serial chain -->
-    <link name="${prefix}base_link"/>
-    <link name="${prefix}base_link_inertia">
+    <link
+      name="${prefix}base_link">
+      <inertial>
+        <origin
+          xyz="-2.77555756156289E-17 -6.93889390390723E-18 0.0147527451068121"
+          rpy="0 0 0" />
+        <mass
+          value="0.825861073097743" />
+        <inertia
+          ixx="0.00208027891140235"
+          ixy="7.18819952308587E-19"
+          ixz="-3.83671593666765E-19"
+          iyy="0.00208027891140234"
+          iyz="1.21427799633453E-18"
+          izz="0.00391932737987958" />
+      </inertial>
       <visual>
-        <origin xyz="0 0 0" rpy="0 0 ${pi}"/>
+        <origin
+          xyz="0 0 0"
+          rpy="0 0 0" />
         <geometry>
-          <mesh filename="${base_visual_mesh}"/>
+          <mesh
+            filename="package://al_arm_2_4/meshes/base_link.STL" />
         </geometry>
-        <material name="${base_visual_material_name}">
-          <color rgba="${base_visual_material_color}"/>
+        <material
+          name="">
+          <color
+            rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
         </material>
       </visual>
+<!--
       <collision>
-        <origin xyz="0 0 0" rpy="0 0 ${pi}"/>
+        <origin
+          xyz="0 0 0"
+          rpy="0 0 0" />
         <geometry>
-          <mesh filename="${base_collision_mesh}"/>
+          <mesh
+            filename="package://al_arm_2_4/meshes/base_link.STL" />
         </geometry>
       </collision>
-      <xacro:cylinder_inertial radius="${base_inertia_radius}" length="${base_inertia_length}" mass="${base_mass}">
-        <origin xyz="0 0 0" rpy="0 0 0" />
-      </xacro:cylinder_inertial>
+-->
     </link>
-    <link name="${prefix}shoulder_link">
+    <link
+      name="${prefix}Section_1">
+      <inertial>
+        <origin
+          xyz="-4.769589445619E-10 -0.00578107509486808 0.0864872761296607"
+          rpy="0 0 0" />
+        <mass
+          value="2.20704513466782" />
+        <inertia
+          ixx="0.00972749157915772"
+          ixy="-8.99674275653841E-10"
+          ixz="4.47374745600098E-10"
+          iyy="0.00958414619563909"
+          iyz="0.000299996856367023"
+          izz="0.00557677453899357" />
+      </inertial>
       <visual>
-        <origin xyz="0 0 0" rpy="0 0 ${pi}"/>
+        <origin
+          xyz="0 0 0"
+          rpy="0 0 0" />
         <geometry>
-          <mesh filename="${shoulder_visual_mesh}"/>
+          <mesh
+            filename="package://al_arm_2_4/meshes/Section_1.STL" />
         </geometry>
-        <material name="${shoulder_visual_material_name}">
-          <color rgba="${shoulder_visual_material_color}"/>
+        <material
+          name="">
+          <color
+            rgba="0.501960784313725 0.501960784313725 1 1" />
         </material>
       </visual>
+<!--
       <collision>
-        <origin xyz="0 0 0" rpy="0 0 ${pi}"/>
+        <origin
+          xyz="0 0 0"
+          rpy="0 0 0" />
         <geometry>
-          <mesh filename="${shoulder_collision_mesh}"/>
+          <mesh
+            filename="package://al_arm_2_4/meshes/Section_1.STL" />
         </geometry>
       </collision>
-      <xacro:cylinder_inertial radius="${shoulder_inertia_radius}" length="${shoulder_inertia_length}" mass="${shoulder_mass}">
-        <origin xyz="0 0 0" rpy="0 0 0" />
-      </xacro:cylinder_inertial>
+-->
     </link>
-    <link name="${prefix}upper_arm_link">
-      <visual>
-        <origin xyz="0 0 ${shoulder_offset}" rpy="${pi/2} 0 ${-pi/2}"/>
-        <geometry>
-          <mesh filename="${upper_arm_visual_mesh}"/>
-        </geometry>
-        <material name="${upper_arm_visual_material_name}">
-          <color rgba="${upper_arm_visual_material_color}"/>
-        </material>
-      </visual>
-      <collision>
-        <origin xyz="0 0 ${shoulder_offset}" rpy="${pi/2} 0 ${-pi/2}"/>
-        <geometry>
-          <mesh filename="${upper_arm_collision_mesh}"/>
-        </geometry>
-      </collision>
-      <xacro:cylinder_inertial radius="${upperarm_inertia_radius}" length="${upperarm_inertia_length}" mass="${upper_arm_mass}">
-        <origin xyz="${-0.5 * upperarm_inertia_length} 0.0 ${upper_arm_inertia_offset}" rpy="0 ${pi/2} 0" />
-      </xacro:cylinder_inertial>
-    </link>
-    <link name="${prefix}forearm_link">
-      <visual>
-        <origin xyz="0 0 ${elbow_offset}" rpy="${pi/2} 0 ${-pi/2}"/>
-        <geometry>
-          <mesh filename="${forearm_visual_mesh}"/>
-        </geometry>
-        <material name="${forearm_visual_material_name}">
-          <color rgba="${forearm_visual_material_color}"/>
-        </material>
-      </visual>
-      <collision>
-        <origin xyz="0 0 ${elbow_offset}" rpy="${pi/2} 0 ${-pi/2}"/>
-        <geometry>
-          <mesh filename="${forearm_collision_mesh}"/>
-        </geometry>
-      </collision>
-      <xacro:cylinder_inertial radius="${forearm_inertia_radius}" length="${forearm_inertia_length}"  mass="${forearm_mass}">
-        <origin xyz="${-0.5 * forearm_inertia_length} 0.0 ${elbow_offset}" rpy="0 ${pi/2} 0" />
-      </xacro:cylinder_inertial>
-    </link>
-    <link name="${prefix}wrist_1_link">
-      <visual>
-        <!-- TODO: Move this to a parameter -->
-        <origin xyz="0 0 ${wrist_1_visual_offset}" rpy="${pi/2} 0 0"/>
-        <geometry>
-          <mesh filename="${wrist_1_visual_mesh}"/>
-        </geometry>
-        <material name="${wrist_1_visual_material_name}">
-          <color rgba="${wrist_1_visual_material_color}"/>
-        </material>
-      </visual>
-      <collision>
-        <origin xyz="0 0 ${wrist_1_visual_offset}" rpy="${pi/2} 0 0"/>
-        <geometry>
-          <mesh filename="${wrist_1_collision_mesh}"/>
-        </geometry>
-      </collision>
-      <xacro:cylinder_inertial radius="${wrist_1_inertia_radius}" length="${wrist_1_inertia_length}"  mass="${wrist_1_mass}">
-        <origin xyz="0 0 0" rpy="0 0 0" />
-      </xacro:cylinder_inertial>
-    </link>
-    <link name="${prefix}wrist_2_link">
-      <visual>
-        <origin xyz="0 0 ${wrist_2_visual_offset}" rpy="0 0 0"/>
-        <geometry>
-          <mesh filename="${wrist_2_visual_mesh}"/>
-        </geometry>
-        <material name="${wrist_2_visual_material_name}">
-          <color rgba="${wrist_2_visual_material_color}"/>
-        </material>
-      </visual>
-      <collision>
-        <origin xyz="0 0 ${wrist_2_visual_offset}" rpy="0 0 0"/>
-        <geometry>
-          <mesh filename="${wrist_2_collision_mesh}"/>
-        </geometry>
-      </collision>
-      <xacro:cylinder_inertial radius="${wrist_2_inertia_radius}" length="${wrist_2_inertia_length}"  mass="${wrist_2_mass}">
-        <origin xyz="0 0 0" rpy="0 0 0" />
-      </xacro:cylinder_inertial>
-    </link>
-    <link name="${prefix}wrist_3_link">
-      <visual>
-        <origin xyz="0 0 ${wrist_3_visual_offset}" rpy="${pi/2} 0 0"/>
-        <geometry>
-          <mesh filename="${wrist_3_visual_mesh}"/>
-        </geometry>
-        <material name="${wrist_3_visual_material_name}">
-          <color rgba="${wrist_3_visual_material_color}"/>
-        </material>
-      </visual>
-      <collision>
-        <origin xyz="0 0 ${wrist_3_visual_offset}" rpy="${pi/2} 0 0"/>
-        <geometry>
-          <mesh filename="${wrist_3_collision_mesh}"/>
-        </geometry>
-      </collision>
-      <xacro:cylinder_inertial radius="${wrist_3_inertia_radius}" length="${wrist_3_inertia_length}"  mass="${wrist_3_mass}">
-        <origin xyz="0.0 0.0 ${-0.5 * wrist_3_inertia_length}" rpy="0 0 0" />
-      </xacro:cylinder_inertial>
-    </link>
-
-    <!-- joints: main serial chain -->
-    <joint name="${prefix}base_link-base_link_inertia" type="fixed">
-      <parent link="${prefix}base_link" />
-      <child link="${prefix}base_link_inertia" />
-      <!-- 'base_link' is REP-103 aligned (so X+ forward), while the internal
-           frames of the robot/controller have X+ pointing backwards.
-           Use the joint between 'base_link' and 'base_link_inertia' (a dummy
-           link/frame) to introduce the necessary rotation over Z (of pi rad).
-      -->
-      <origin xyz="0 0 0" rpy="0 0 ${pi}" />
+    <joint
+      name="${prefix}shoulder_pan_joint"
+      type="revolute">
+      <origin
+        xyz="0 0 0.0427"
+        rpy="0 0 0" />
+      <parent
+        link="${prefix}base_link" />
+      <child
+        link="${prefix}Section_1" />
+      <axis
+        xyz="0 0 1" />
+      <limit
+        lower="-${2*pi}"
+        upper="${2*pi}"
+        effort="0"
+        velocity="0" />
     </joint>
-    <joint name="${prefix}shoulder_pan_joint" type="revolute">
-      <parent link="${prefix}base_link_inertia" />
-      <child link="${prefix}shoulder_link" />
-      <origin xyz="${shoulder_x} ${shoulder_y} ${shoulder_z}" rpy="${shoulder_roll} ${shoulder_pitch} ${shoulder_yaw}" />
-      <axis xyz="0 0 1" />
-      <limit lower="${shoulder_pan_lower_limit}" upper="${shoulder_pan_upper_limit}"
-        effort="${shoulder_pan_effort_limit}" velocity="${shoulder_pan_velocity_limit}"/>
-      <xacro:if value="${safety_limits}">
-         <safety_controller soft_lower_limit="${shoulder_pan_lower_limit + safety_pos_margin}" soft_upper_limit="${shoulder_pan_upper_limit - safety_pos_margin}" k_position="${safety_k_position}" k_velocity="0.0"/>
-      </xacro:if>
-      <dynamics damping="0" friction="0"/>
+    <link
+      name="${prefix}Section_2">
+      <inertial>
+        <origin
+          xyz="0.00569024618398725 -0.0592330307348451 0.0847722705633866"
+          rpy="0 0 0" />
+        <mass
+          value="2.87379999776765" />
+        <inertia
+          ixx="0.0119233315947595"
+          ixy="3.28719549360251E-05"
+          ixz="8.97711261832225E-06"
+          iyy="0.0115840982517504"
+          iyz="-9.32165517083273E-05"
+          izz="0.00639031852495258" />
+      </inertial>
+      <visual>
+        <origin
+          xyz="0 0 0"
+          rpy="0 0 0" />
+        <geometry>
+          <mesh
+            filename="package://al_arm_2_4/meshes/Section_2.STL" />
+        </geometry>
+        <material
+          name="">
+          <color
+            rgba="0.501960784313725 0.501960784313725 1 1" />
+        </material>
+      </visual>
+<!--
+      <collision>
+        <origin
+          xyz="0 0 0"
+          rpy="0 0 0" />
+        <geometry>
+          <mesh
+            filename="package://al_arm_2_4/meshes/Section_2.STL" />
+        </geometry>
+      </collision>
+-->
+    </link>
+    <joint
+      name="${prefix}shoulder_lift_joint"
+      type="revolute">
+      <origin
+        xyz="0 -0.05987 0.11"
+        rpy="1.5708 -1.5708 0" />
+      <parent
+        link="${prefix}Section_1" />
+      <child
+        link="${prefix}Section_2" />
+      <axis
+        xyz="0 0 1" />
+      <limit
+        lower="-${2*pi}"
+        upper="${2*pi}"
+        effort="0"
+        velocity="0" />
     </joint>
-    <joint name="${prefix}shoulder_lift_joint" type="revolute">
-      <parent link="${prefix}shoulder_link" />
-      <child link="${prefix}upper_arm_link" />
-      <origin xyz="${upper_arm_x} ${upper_arm_y} ${upper_arm_z}" rpy="${upper_arm_roll} ${upper_arm_pitch} ${upper_arm_yaw}" />
-      <axis xyz="0 0 1" />
-      <limit lower="${shoulder_lift_lower_limit}" upper="${shoulder_lift_upper_limit}"
-        effort="${shoulder_lift_effort_limit}" velocity="${shoulder_lift_velocity_limit}"/>
-      <xacro:if value="${safety_limits}">
-         <safety_controller soft_lower_limit="${shoulder_lift_lower_limit + safety_pos_margin}" soft_upper_limit="${shoulder_lift_upper_limit - safety_pos_margin}" k_position="${safety_k_position}" k_velocity="0.0"/>
-      </xacro:if>
-      <dynamics damping="0" friction="0"/>
+    <link
+      name="${prefix}Section_3">
+      <inertial>
+        <origin
+          xyz="0.0173648639387132 0.0912076643926963 0.0500626667440319"
+          rpy="0 0 0" />
+        <mass
+          value="1.92709928656712" />
+        <inertia
+          ixx="0.00368998945777063"
+          ixy="3.05076380336817E-05"
+          ixz="1.16559983695196E-05"
+          iyy="0.00323465061568845"
+          iyz="-0.000174745483419691"
+          izz="0.00260488915737105" />
+      </inertial>
+      <visual>
+        <origin
+          xyz="-0.02 0 0"
+          rpy="0 0 0" />
+        <geometry>
+          <mesh
+            filename="package://al_arm_2_4/meshes/Section_3.STL" />
+        </geometry>
+        <material
+          name="">
+          <color
+            rgba="0.501960784313725 0.501960784313725 1 1" />
+        </material>
+      </visual>
+<!--
+      <collision>
+        <origin
+          xyz="-0.02 0 0"
+          rpy="0 0 0" />
+        <geometry>
+          <mesh
+            filename="package://al_arm_2_4/meshes/Section_3.STL" />
+        </geometry>
+      </collision>
+-->
+    </link>
+    <joint
+      name="${prefix}elbow_joint"
+      type="revolute">
+      <origin
+        xyz="0.02 -0.246 0"
+        rpy="3.1416 0 0" />
+      <parent
+        link="${prefix}Section_2" />
+      <child
+        link="${prefix}Section_3" />
+      <axis
+        xyz="0 0 1" />
+      <limit
+        lower="-${2*pi}"
+        upper="${2*pi}"
+        effort="0"
+        velocity="0" />
     </joint>
-    <joint name="${prefix}elbow_joint" type="revolute">
-      <parent link="${prefix}upper_arm_link" />
-      <child link="${prefix}forearm_link" />
-      <origin xyz="${forearm_x} ${forearm_y} ${forearm_z}" rpy="${forearm_roll} ${forearm_pitch} ${forearm_yaw}" />
-      <axis xyz="0 0 1" />
-      <limit lower="${elbow_joint_lower_limit}" upper="${elbow_joint_upper_limit}"
-        effort="${elbow_joint_effort_limit}" velocity="${elbow_joint_velocity_limit}"/>
-      <xacro:if value="${safety_limits}">
-         <safety_controller soft_lower_limit="${elbow_joint_lower_limit + safety_pos_margin}" soft_upper_limit="${elbow_joint_upper_limit - safety_pos_margin}" k_position="${safety_k_position}" k_velocity="0.0"/>
-      </xacro:if>
-      <dynamics damping="0" friction="0"/>
+    <link
+      name="${prefix}Section_4">
+      <inertial>
+        <origin
+          xyz="-0.000500524936368707 -0.00715552055742108 0.0398520497439656"
+          rpy="0 0 0" />
+        <mass
+          value="0.719205488845405" />
+        <inertia
+          ixx="0.00198283415215535"
+          ixy="-6.40311421072341E-05"
+          ixz="7.24876225545178E-06"
+          iyy="0.00107141913691535"
+          iyz="0.000103682909011202"
+          izz="0.00177485843278576" />
+      </inertial>
+      <visual>
+        <origin
+          xyz="0 0 0"
+          rpy="0 0 0" />
+        <geometry>
+          <mesh
+            filename="package://al_arm_2_4/meshes/Section_4.STL" />
+        </geometry>
+        <material
+          name="">
+          <color
+            rgba="0.501960784313725 0.501960784313725 1 1" />
+        </material>
+      </visual>
+<!--
+      <collision>
+        <origin
+          xyz="0 0 0"
+          rpy="0 0 0" />
+        <geometry>
+          <mesh
+            filename="package://al_arm_2_4/meshes/Section_4.STL" />
+        </geometry>
+      </collision>
+-->
+    </link>
+    <joint
+      name="${prefix}wrist_1_joint"
+      type="revolute">
+      <origin
+        xyz="-0.01 0.23734 0.12"
+        rpy="0 0 0.066603" />
+      <parent
+        link="${prefix}Section_3" />
+      <child
+        link="${prefix}Section_4" />
+      <axis
+        xyz="0 0 -1" />
+      <limit
+        lower="-${2*pi}"
+        upper="${2*pi}"
+        effort="0"
+        velocity="0" />
     </joint>
-    <joint name="${prefix}wrist_1_joint" type="revolute">
-      <parent link="${prefix}forearm_link" />
-      <child link="${prefix}wrist_1_link" />
-      <origin xyz="${wrist_1_x} ${wrist_1_y} ${wrist_1_z}" rpy="${wrist_1_roll} ${wrist_1_pitch} ${wrist_1_yaw}" />
-      <axis xyz="0 0 1" />
-      <limit lower="${wrist_1_lower_limit}" upper="${wrist_1_upper_limit}"
-        effort="${wrist_1_effort_limit}" velocity="${wrist_1_velocity_limit}"/>
-      <xacro:if value="${safety_limits}">
-         <safety_controller soft_lower_limit="${wrist_1_lower_limit + safety_pos_margin}" soft_upper_limit="${wrist_1_upper_limit - safety_pos_margin}" k_position="${safety_k_position}" k_velocity="0.0"/>
-      </xacro:if>
-      <dynamics damping="0" friction="0"/>
+    <link
+      name="${prefix}Section_5">
+      <inertial>
+        <origin
+          xyz="0.00534097882409715 0.00478808006080828 0.0398529181094507"
+          rpy="0 0 0" />
+        <mass
+          value="0.719208015630497" />
+        <inertia
+          ixx="0.00147703626332574"
+          ixy="-0.000457449746343102"
+          ixz="-7.73905050070936E-05"
+          iyy="0.00157721702760716"
+          iyz="-6.93786711792569E-05"
+          izz="0.00177485843382113" />
+      </inertial>
+      <visual>
+        <origin
+          xyz="0 0 0"
+          rpy="0 0 0" />
+        <geometry>
+          <mesh
+            filename="package://al_arm_2_4/meshes/Section_5.STL" />
+        </geometry>
+        <material
+          name="">
+          <color
+            rgba="0.501960784313725 0.501960784313725 1 1" />
+        </material>
+      </visual>
+<!--
+      <collision>
+        <origin
+          xyz="0 0 0"
+          rpy="0 0 0" />
+        <geometry>
+          <mesh
+            filename="package://al_arm_2_4/meshes/Section_5.STL" />
+        </geometry>
+      </collision>
+-->
+    </link>
+    <joint
+      name="${prefix}wrist_2_joint"
+      type="revolute">
+      <origin
+        xyz="0.0041845 0.06 0.06"
+        rpy="${-pi/2} ${-0.74+pi} -0.05" />
+      <parent
+        link="${prefix}Section_4" />
+      <child
+        link="${prefix}Section_5" />
+      <axis
+        xyz="0 0 -1" />
+      <limit
+        lower="-${2*pi}"
+        upper="${2*pi}"
+        effort="0"
+        velocity="0" />
     </joint>
-    <joint name="${prefix}wrist_2_joint" type="revolute">
-      <parent link="${prefix}wrist_1_link" />
-      <child link="${prefix}wrist_2_link" />
-      <origin xyz="${wrist_2_x} ${wrist_2_y} ${wrist_2_z}" rpy="${wrist_2_roll} ${wrist_2_pitch} ${wrist_2_yaw}" />
-      <axis xyz="0 0 1" />
-      <limit lower="${wrist_2_lower_limit}" upper="${wrist_2_upper_limit}"
-             effort="${wrist_2_effort_limit}" velocity="${wrist_2_velocity_limit}"/>
-      <xacro:if value="${safety_limits}">
-         <safety_controller soft_lower_limit="${wrist_2_lower_limit + safety_pos_margin}" soft_upper_limit="${wrist_2_upper_limit - safety_pos_margin}" k_position="${safety_k_position}" k_velocity="0.0"/>
-      </xacro:if>
-      <dynamics damping="0" friction="0"/>
-    </joint>
-    <joint name="${prefix}wrist_3_joint" type="revolute">
-      <parent link="${prefix}wrist_2_link" />
-      <child link="${prefix}wrist_3_link" />
-      <origin xyz="${wrist_3_x} ${wrist_3_y} ${wrist_3_z}" rpy="${wrist_3_roll} ${wrist_3_pitch} ${wrist_3_yaw}" />
-      <axis xyz="0 0 1" />
-      <limit lower="${wrist_3_lower_limit}" upper="${wrist_3_upper_limit}"
-             effort="${wrist_3_effort_limit}" velocity="${wrist_3_velocity_limit}"/>
-      <xacro:if value="${safety_limits}">
-         <safety_controller soft_lower_limit="${wrist_3_lower_limit + safety_pos_margin}" soft_upper_limit="${wrist_3_upper_limit - safety_pos_margin}" k_position="${safety_k_position}" k_velocity="0.0"/>
-      </xacro:if>
-      <dynamics damping="0" friction="0"/>
+    <link
+      name="${prefix}EOAT">
+      <inertial>
+        <origin
+          xyz="-0.00503974917427097 -4.16333634234434E-17 0.0809804391232777"
+          rpy="0 0 0" />
+        <mass
+          value="1.06840448399365" />
+        <inertia
+          ixx="0.00483261590021105"
+          ixy="-1.86459946519464E-19"
+          ixz="-0.000616134654859444"
+          iyy="0.00518291038448933"
+          iyz="-9.75781955236954E-19"
+          izz="0.00115981481925935" />
+      </inertial>
+      <visual>
+        <origin
+          xyz="0 0 0"
+          rpy="0 0 0" />
+        <geometry>
+          <mesh
+            filename="package://al_arm_2_4/meshes/EOAT.STL" />
+        </geometry>
+        <material
+          name="">
+          <color
+            rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+        </material>
+      </visual>
+<!--
+      <collision>
+        <origin
+          xyz="0 0 0"
+          rpy="0 0 0" />
+        <geometry>
+          <mesh
+            filename="package://al_arm_2_4/meshes/EOAT.STL" />
+        </geometry>
+      </collision>
+-->
+    </link>
+    <joint
+      name="${prefix}wrist_3_joint"
+      type="revolute">
+      <origin
+        xyz="-0.044676 -0.040051 0.06"
+        rpy="2.3 ${1.5708-pi} ${-pi/2}" />
+      <parent
+        link="${prefix}Section_5" />
+      <child
+        link="${prefix}EOAT" />
+      <axis
+        xyz="0 0 1" />
+      <limit
+        lower="-${2*pi}"
+        upper="${2*pi}"
+        effort="0"
+        velocity="0" />
     </joint>
 
     <!-- ROS-Industrial 'base' frame: base_link to UR 'Base' Coordinates transform -->
@@ -319,7 +495,7 @@
     <!-- ROS-Industrial 'flange' frame: attachment point for EEF models -->
     <link name="${prefix}flange" />
     <joint name="${prefix}wrist_3-flange" type="fixed">
-      <parent link="${prefix}wrist_3_link" />
+      <parent link="${prefix}Section_5" />
       <child link="${prefix}flange" />
       <origin xyz="0 0 0" rpy="0 ${-pi/2.0} ${-pi/2.0}" />
     </joint>
@@ -329,7 +505,7 @@
     <joint name="${prefix}flange-tool0" type="fixed">
       <!-- default toolframe: X+ left, Y+ up, Z+ front -->
       <origin xyz="0 0 0" rpy="${pi/2.0} 0 ${pi/2.0}"/>
-      <parent link="${prefix}flange"/>
+      <parent link="${prefix}EOAT"/>
       <child link="${prefix}tool0"/>
     </joint>
   </xacro:macro>
