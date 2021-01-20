@@ -106,6 +106,7 @@
             rgba="0.79216 0.81961 0.93333 1" />
         </material>
       </visual>
+<!--
       <collision>
         <origin
           xyz="0 0 0"
@@ -115,6 +116,7 @@
             filename="package://al_arm_5_2/meshes/base.STL" />
         </geometry>
       </collision>
+-->
     </link>
     <link name="${prefix}shoulder_link">
       <inertial>
@@ -145,6 +147,7 @@
             rgba="0.50196 0.50196 1 1" />
         </material>
       </visual>
+<!--
       <collision>
         <origin
           xyz="0 0 0"
@@ -154,6 +157,7 @@
             filename="package://al_arm_5_2/meshes/seg1.STL" />
         </geometry>
       </collision>
+-->
     </link>
     <link name="${prefix}upper_arm_link">
       <inertial>
@@ -184,6 +188,7 @@
             rgba="0.50196 0.50196 1 1" />
         </material>
       </visual>
+<!--
       <collision>
         <origin
           xyz="0 0 0"
@@ -193,6 +198,7 @@
             filename="package://al_arm_5_2/meshes/seg2.STL" />
         </geometry>
       </collision>
+-->
     </link>
     <link name="${prefix}forearm_link">
       <inertial>
@@ -223,6 +229,7 @@
             rgba="0.89804 0.91765 0.92941 1" />
         </material>
       </visual>
+<!--
       <collision>
         <origin
           xyz="0 0 0"
@@ -232,6 +239,7 @@
             filename="package://al_arm_5_2/meshes/seg3.STL" />
         </geometry>
       </collision>
+-->
     </link>
     <link name="${prefix}wrist_1_link">
       <inertial>
@@ -262,6 +270,7 @@
             rgba="0.50196 0.50196 1 1" />
         </material>
       </visual>
+<!--
       <collision>
         <origin
           xyz="0 0 0"
@@ -271,6 +280,7 @@
             filename="package://al_arm_5_2/meshes/seg4.STL" />
         </geometry>
       </collision>
+-->
     </link>
     <link name="${prefix}wrist_2_link">
       <inertial>
@@ -301,6 +311,7 @@
             rgba="0.50196 0.50196 1 1" />
         </material>
       </visual>
+<!--
       <collision>
         <origin
           xyz="0 0 0"
@@ -310,6 +321,7 @@
             filename="package://al_arm_5_2/meshes/seg5.STL" />
         </geometry>
       </collision>
+-->
     </link>
     <link name="${prefix}wrist_3_link">
       <inertial>
@@ -340,6 +352,7 @@
             rgba="0.50196 0.50196 1 1" />
         </material>
       </visual>
+<!--
       <collision>
         <origin
           xyz="0 0 -0.06"
@@ -349,6 +362,7 @@
             filename="package://al_arm_5_2/meshes/seg6.STL" />
         </geometry>
       </collision>
+-->
     </link>
 
     <!-- joints: main serial chain -->
