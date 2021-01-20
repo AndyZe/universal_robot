@@ -385,8 +385,8 @@
       <axis
         xyz="0 0 1" />
       <limit
-        lower="3.15"
-        upper="-3.15"
+        lower="-6.28"
+        upper="6.28"
         effort="0"
         velocity="0" />
     </joint>
@@ -399,8 +399,8 @@
       <axis
         xyz="0 0 1" />
       <limit
-        lower="3.15"
-        upper="-3.15"
+        lower="-6.28"
+        upper="6.28"
         effort="0"
         velocity="0" />
     </joint>
@@ -413,8 +413,8 @@
       <axis
         xyz="0 0 -1" />
       <limit
-        lower="3.15"
-        upper="-3.15"
+        lower="-6.28"
+        upper="6.28"
         effort="0"
         velocity="0" />
     </joint>
@@ -427,8 +427,8 @@
       <axis
         xyz="0 0 -1" />
       <limit
-        lower="3.15"
-        upper="-3.15"
+        lower="-6.28"
+        upper="6.28"
         effort="0"
         velocity="0" />
     </joint>
@@ -455,8 +455,8 @@
       <axis
         xyz="0 -0.10453 -0.99452" />
       <limit
-        lower="3.15"
-        upper="-3.15"
+        lower="-6.28"
+        upper="6.28"
         effort="0"
         velocity="0" />
     </joint>
@@ -489,7 +489,7 @@
     <link name="${prefix}tool0"/>
     <joint name="${prefix}flange-tool0" type="fixed">
       <!-- default toolframe: X+ left, Y+ up, Z+ front -->
-      <origin xyz="0 0 -0.1" rpy="${pi/2.0} 0 ${pi/2.0}"/>
+      <origin xyz="0 0 0" rpy="${pi/2.0} 0 ${pi/2.0}"/>
       <parent link="${prefix}flange"/>
       <child link="${prefix}tool0"/>
     </joint>
